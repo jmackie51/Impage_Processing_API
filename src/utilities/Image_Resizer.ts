@@ -5,7 +5,11 @@ import { existsSync } from 'fs';
 //---------------------------------------------------------------
 // Take the requested image and resize it based on URL parameters
 //---------------------------------------------------------------
-const imageResizer = async (  req: express.Request,  res: express.Response,  next: express.NextFunction): Promise<void> => {
+const imageResizer = async (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+): Promise<void> => {
   //get parameters from url
   const fileName = req.query.filename;
   const width = Number(req.query.width);

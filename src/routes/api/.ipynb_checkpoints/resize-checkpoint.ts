@@ -9,8 +9,12 @@ resize.use(express.static('/home/workspace'));
 
 //get resize endpoint and call the ImageResizer function as middleware
 //send the resized image to the browser
-resize.get('/', ImageResizer, (req, res) => {
-  res.sendFile('/home/workspace/frontend/index.html');
-});
+resize.get(
+  '/',
+  ImageResizer,
+  (req: express.Request, res: express.Response): void => {
+    res.sendFile('/home/workspace/frontend/index.html');
+  }
+);
 
 export = resize;

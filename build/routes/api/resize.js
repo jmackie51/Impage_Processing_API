@@ -11,7 +11,6 @@ resize.use(express_1.default.static('/home/workspace'));
 //get resize endpoint and call the ImageResizer function as middleware
 //send the resized image to the browser
 resize.get('/', Image_Resizer_1.default, (req, res) => {
-    console.log(__dirname);
     res.sendFile('/home/workspace/frontend/index.html');
 });
 module.exports = resize;

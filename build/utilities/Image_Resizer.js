@@ -18,7 +18,6 @@ const fs_1 = require("fs");
 // Take the requested image and resize it based on URL parameters
 //---------------------------------------------------------------
 const imageResizer = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    //const imageResizer = async (req: express.Request, res: express.Response): Promise<void> => {
     //get parameters from url
     const fileName = req.query.filename;
     const width = Number(req.query.width);
