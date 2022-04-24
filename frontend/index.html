@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ 
+<head>
+    <img/>
+    <h3 id = "desc"></h3>
+        
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileName = urlParams.get('filename');
+        const width = urlParams.get('width');
+        const height = urlParams.get('height');
+        const img = document.querySelector("img"); 
+        img.src = "images/thumbnails/" + fileName + "_" + width + "_" + height + ".jpg"
+        document.getElementById("desc").innerHTML = "Picture Name:  " + fileName + "<br>  Sized to:  " + width + " X " + height ;
+    </script>
+    
+</head>
+ 
+</html>
