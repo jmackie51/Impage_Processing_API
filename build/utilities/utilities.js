@@ -16,7 +16,9 @@ const sharp_1 = __importDefault(require("sharp"));
 const resizingUtility = (fullImagePath, thumbImagePath, width, height) => __awaiter(void 0, void 0, void 0, function* () {
     let retString;
     try {
-        yield (0, sharp_1.default)(fullImagePath).resize(width, height).toFile(thumbImagePath); //send image to be stored here for future requests
+        yield (0, sharp_1.default)(fullImagePath)
+            .resize(width, height)
+            .toFile(thumbImagePath); //send image to be stored here for future requests
     }
     catch (e) {
         console.error('Error: ', e);

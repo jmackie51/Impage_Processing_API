@@ -14,12 +14,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const supertest_1 = __importDefault(require("supertest"));
 const index_1 = __importDefault(require("../../index"));
+const Image_Resizer_1 = __importDefault(require("../../utilities/Image_Resizer"));
 const request = (0, supertest_1.default)(index_1.default);
-//Test that we do not get any errors when we request an image to be resized
-describe('2. Test the Image Resize Endpoint', () => {
-    it('Expect the resizer not to throw an error', () => __awaiter(void 0, void 0, void 0, function* () {
+//Test that we do not get any errors when we request an image to be resized via the endpoint
+describe('2. Test the Image Resizing functionality', () => {
+    it('Expect the resizing endpoint not to throw an error', () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request.get('/api/resize/?filename=fjord&width=300&height=207');
         expect(response.error).toBe(false);
         //done();
+    }));
+    //Test that we do NOT get any errors when we call the resizing utility
+    it('expects resizingUtility(`/home/workspace/images/full/fjord.jpg`, `/home/workspace/images/thumbnails/fjord_300_300.jpg`, 300,300) to be resolved', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield expectAsync((0, Image_Resizer_1.default)(`/home/workspace/images/full/fjord.jpg`, `/home/workspace/images/thumbnails/fjord_300_300.jpg`, 300, 300)).toBeResolved();
+    }));
+    //Test that we DO get errors when we call the resizing utility with the name of an image that doesnt exist
+    it('expects resizingUtility(`/home/workspace/images/full/frd.jpg`, `/home/workspace/images/thumbnails/fjd_300_300.jpg`, 300,300) to be rejected', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield expectAsync((0, Image_Resizer_1.default)(`/home/workspace/images/full/frd.jpg`, `/home/workspace/images/thumbnails/fjd_300_300.jpg`, 300, 300)).toBeRejected();
     }));
 });
