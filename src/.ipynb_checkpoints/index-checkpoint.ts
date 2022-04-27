@@ -9,6 +9,7 @@ app.use('/api', routes);
 
 //Start server
 app.listen(port, () => {
+    console.log(__dirname);
   console.log(`server started at localhost:${port}`);
 });
 
